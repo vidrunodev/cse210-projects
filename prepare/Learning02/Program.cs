@@ -2,36 +2,36 @@ using System;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Job job1 = new Job();
-        job1._jobTitle = "Software Engineer";
-        job1._company = "Microsoft";
-        job1._startDate = "2019";
-        job1._endDate = "2022";
+        // Create Job instances
+        Job job1 = new Job
+        {
+            _jobTitle = "Software Engineer",
+            _company = "Microsoft",
+            _startYear = 2019,
+            _endYear = 2022,
+        };
 
-        Job job2 = new Job();
-        job2._jobTitle = "Manager";
-        job2._company = "Apple";
-        job2._startDate = "2022";
-        job2._endDate = "2023";
+        Job job2 = new Job
+        {
+            _jobTitle = "Manager",
+            _company = "Apple",
+            _startYear = 2022,
+            _endYear = 2023,
+        };
 
-        // Display company using dot notation
-        Console.WriteLine(job1._company);
-        Console.WriteLine(job2._company);
+        // Create Resume instance
+        Resume myResume = new Resume
+        {
+            _name = "Allison Rose"
+        };
 
-        job1.Display();
-        job2.Display();
+        // Add jobs to the list
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
 
-        Resume MyResume = new Resume();
-        MyResume._personName = "Allison Rose";
-
-        //Add jobs to resume
-        MyResume._jobs.Add(job1);
-        MyResume._jobs.Add(job2);
-
-        //to verify access and display the first job
-        Console.WriteLine(MyResume._jobs[0]._jobTitle);
-
+        // Display resume details using the Display method
+        myResume.Display();
     }
 }
