@@ -23,5 +23,15 @@ class Program
         job1.Display();
         job2.Display();
 
+        Resume MyResume = new Resume();
+        MyResume._personName = "Allison Rose";
+
+        //Add jobs to resume
+        MyResume._jobs.Add(job1);
+        MyResume._jobs.Add(job2);
+
+        //to verify access and display the first job
+        Console.WriteLine(MyResume._jobs[0]._jobTitle);
+
     }
 }
