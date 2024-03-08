@@ -20,5 +20,8 @@ class Program
         Console.WriteLine(job1._company);
         Console.WriteLine(job2._company);
 
+        job1.Display();
+        job2.Display();
+
     }
 }
