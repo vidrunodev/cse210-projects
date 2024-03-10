@@ -30,21 +30,27 @@ class Journal
 // Saves the journal entries to a CSV file specified by the 'file' parameter.
 public void SaveToFile(string file)
 {
+    // Check if the file has the .csv extension
+    if (!file.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
+    {
+        // Append .csv extension if not present
+        file += ".csv";
+    }
+
     using (StreamWriter writer = new StreamWriter(file))
     {
         // Write the header line
-        writer.WriteLine("Date,Prompt,Response");
+        writer.WriteLine("Date,Prompt,Entry");
 
+        // Write each entry with comma-separated values
         foreach (var entry in _entries)
         {
-            // Write each entry as a line in the CSV file
             writer.WriteLine($"{entry.Date},{entry.PromptText},{entry.EntryText}");
         }
     }
 
-    Console.WriteLine("Journal saved successfully in CSV format!");
+    Console.WriteLine($"Journal saved successfully as {file}!");
 }
-
 
     // LoadFromFile method reads the content of the specified file and populates the entries. If the file doesn't exist, it displays an error message.
     public void LoadFromFile(string file)
